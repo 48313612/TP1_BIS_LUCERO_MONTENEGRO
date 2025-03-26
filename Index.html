@@ -9,28 +9,30 @@
     <title>Formulario con validación en tiempo real</title>
 </head>
 <body>
+    <div class="alert alert-danger" role="alert" id="alertaRojo" style="display: none;"></div>
     <div class="container form">
         <form id="form" class="form">
             <div class="form-group">
                 <label for="notaMatematica">Ingrese la nota de matemática: </label>
-                <input type="text" id="notaMatematica" class="form-control">
-                <span id="mensajeMatematica" class="error-message" style="color:red;"></span>
+                <input type="text" id="notaMatematica" class="form-control" oninput="validarForm()">
             </div>
             <div class="form-group">
                 <label for="notaLengua">Ingrese la nota de lengua: </label>
-                <input type="text" id="notaLengua" class="form-control">
-                <span id="mensajeLengua" class="error-message" style="color:red;"></span>
+                <input type="text" id="notaLengua" class="form-control" oninput="validarForm()">
             </div>
             <div class="form-group">
                 <label for="notaEFSI">Ingrese la nota de EFSI: </label>
-                <input type="text" id="notaEFSI" class="form-control">
-                <span id="mensajeEFSI" class="error-message" style="color:red;"></span>
+                <input type="text" id="notaEFSI" class="form-control" oninput="validarForm()">
+            </div>
+            <div id="mensajeError" class="alert alert-danger" style="display: none;">
+                Error. Debe ser un número entre 1 y 10.
             </div>
             <button type="button" class="btn btn-primary" onclick="calcularPromedio()">Calcular promedio</button>
-            <br>
+            <div class="alert alert-success" role="alert" id="alertaVerde" style="display: none;"> </div>
             <button type="button" class="btn btn-primary" onclick="mostrarMayorNota()">Mostrar la materia con mayor nota</button>
+            <div class="alert alert-primary" role="alert" id="alertaAzul" style="display: none;"> </div>
         </form>
     </div>
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
