@@ -7,24 +7,26 @@ function validarForm() {
     let notaLenguaValida = validacion(notaLengua);
     let notaEFSIValida = validacion(notaEFSI);
 
-    let mensajeError = document.getElementById('mensajeError');
+    document.getElementById('notaMatematica').style.backgroundColor = 
+        notaMatematica === '' ? '' : (notaMatematicaValida ? "#D6E5BD" : "#ff686b");
+    
+    document.getElementById('notaLengua').style.backgroundColor = 
+        notaLengua === '' ? '' : (notaLenguaValida ? "#D6E5BD" : "#ff686b");
+    
+    document.getElementById('notaEFSI').style.backgroundColor = 
+        notaEFSI === '' ? '' : (notaEFSIValida ? "#D6E5BD" : "#ff686b");
 
-    if (!notaMatematicaValida || !notaLenguaValida || !notaEFSIValida) {
-        mensajeError.style.display = 'block';
-    } else {
-        mensajeError.style.display = 'none';
-    }
 }
 
 function validacion(datoAvalidar) {
+
     const tieneLetra = /(?:[A-Z])/.test(datoAvalidar) || /(?:[a-z])/.test(datoAvalidar);
     const tieneNum = /(?:\d)/.test(datoAvalidar);
 
     let esValido = false;
 
-    if (datoAvalidar <= 10 && datoAvalidar >= 1 && tieneNum && !tieneLetra) {
+    if (datoAvalidar !== '' && datoAvalidar <= 10 && datoAvalidar >= 1 && tieneNum && !tieneLetra) {
         esValido = true;
-        console.log(esValido);
     }
 
     return esValido;
@@ -44,11 +46,9 @@ function calcularPromedio() {
     if (promedio >= 6) {
         alertaVerde.innerHTML = mensaje;
         alertaVerde.style.display = "block";
-        alertaRojo.style.display = "none";
     } else {
         alertaRojo.innerHTML = mensaje;
         alertaRojo.style.display = "block";
-        alertaVerde.style.display = "none";
     }
 }
 
